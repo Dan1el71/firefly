@@ -18,10 +18,10 @@ jobs:
         with:
           fetch-depth: 0  # Full history for accurate SonarQube blame data
 
-      - name: Set up PHP 8.4
+      - name: Set up PHP 8.5
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
+          php-version: '8.5'
           extensions: bcmath, curl, fileinfo, iconv, intl, mbstring, openssl, pdo, pdo_sqlite, sodium, tokenizer, xml, xmlwriter, simplexml, dom
           coverage: xdebug
           tools: composer:v2
@@ -43,7 +43,16 @@ jobs:
 
       - name: Prepare environment
         run: |
-          cp .env.example .env
+          printf '%s\n' \
+            'APP_ENV=testing' \
+            'APP_KEY=' \
+            'APP_DEBUG=true' \
+            'DB_CONNECTION=sqlite' \
+            'DB_DATABASE=' \
+            'LOG_CHANNEL=stack' \
+            'APP_LOG_LEVEL=notice' \
+            'AUDIT_LOG_LEVEL=emergency' \
+            > .env
           php artisan key:generate
 
       - name: Run unit tests with coverage
