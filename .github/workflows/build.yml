@@ -105,6 +105,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=Dan1el71_firefly
-            "-Dsonar.projectName=Firefly III"
-            -Dsonar.sources=.
+            "-Dsonar.projectName=Firefly"
+            -Dsonar.sources=app
+            -Dsonar.tests=tests
             -Dsonar.php.coverage.reportPaths=coverage.xml
