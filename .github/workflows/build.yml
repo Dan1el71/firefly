@@ -38,14 +38,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress --prefer-dist --no-scripts
-
       - name: Prepare environment
         run: |
           printf '%s\n' \
             'APP_ENV=testing' \
-            'APP_KEY=' \
+            'APP_KEY=base64:dGhpc2lzYXRlc3RrZXkxMjM0NTY3ODkwMTI=' \
             'APP_DEBUG=true' \
             'DB_CONNECTION=sqlite' \
             'DB_DATABASE=' \
@@ -53,7 +50,9 @@ jobs:
             'APP_LOG_LEVEL=notice' \
             'AUDIT_LOG_LEVEL=emergency' \
             > .env
-          php artisan key:generate
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
 
       - name: Run unit tests with coverage
         run: |
