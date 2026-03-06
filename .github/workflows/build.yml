@@ -105,7 +105,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.projectKey=firefly-iii
+            -Dsonar.projectKey=Dan1el71_firefly
             -Dsonar.projectName=Firefly III
             -Dsonar.sources=.
             -Dsonar.php.coverage.reportPaths=coverage.xml
