@@ -1,0 +1,1 @@
+function o(e,r){if(typeof e!="number"&&typeof e!="string"||isNaN(e))return console.warn("format-money: amount is not a number:",e),"";if(typeof r!="string"||r.length!==3)return console.warn("format-money: currencyCode is not a valid ISO 4217 code:",r),"";let n=window.__localeId__.replace("_","-");return Intl.NumberFormat(n,{style:"currency",currency:r}).format(e)}export{o as f};

@@ -1,0 +1,1 @@
+import{a as s}from"./dates-DcNZIujM.js";let t=class{list(a){return s.get("/api/v1/subscriptions",{params:a})}paid(a){return s.get("/api/v1/subscriptions/sum/paid",{params:a})}unpaid(a){return s.get("/api/v1/subscriptions/sum/unpaid",{params:a})}};class e{list(a){return s.get("/api/v1/piggy-banks",{params:a})}}export{t as G,e as a};
