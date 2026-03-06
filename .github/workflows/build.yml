@@ -50,6 +50,12 @@ jobs:
             'APP_LOG_LEVEL=notice' \
             'AUDIT_LOG_LEVEL=emergency' \
             > .env
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/framework/cache
+          mkdir -p storage/logs
+          mkdir -p bootstrap/cache
+          chmod -R 775 storage bootstrap/cache
 
       - name: Install Composer dependencies
         env:
@@ -92,7 +98,7 @@ jobs:
           name: coverage-reports
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@v7
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
