@@ -52,7 +52,11 @@ jobs:
             > .env
 
       - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress --prefer-dist
+        env:
+          COMPOSER_NO_SCRIPTS: '1'
+        run: |
+          composer install --no-interaction --no-progress --prefer-dist --no-scripts --no-autoloader
+          composer dump-autoload --no-scripts
 
       - name: Run unit tests with coverage
         run: |
