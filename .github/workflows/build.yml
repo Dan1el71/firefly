@@ -45,7 +45,7 @@ jobs:
             'APP_KEY=base64:dGhpc2lzYXRlc3RrZXkxMjM0NTY3ODkwMTI=' \
             'APP_DEBUG=true' \
             'DB_CONNECTION=sqlite' \
-            'DB_DATABASE=' \
+            'DB_DATABASE=:memory:' \
             'LOG_CHANNEL=stack' \
             'APP_LOG_LEVEL=notice' \
             'AUDIT_LOG_LEVEL=emergency' \
@@ -54,6 +54,7 @@ jobs:
           mkdir -p storage/framework/views
           mkdir -p storage/framework/cache
           mkdir -p storage/logs
+          mkdir -p storage/database
           mkdir -p bootstrap/cache
           chmod -R 775 storage bootstrap/cache
 
